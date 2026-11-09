@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>МатКосмос 6 · математика 6 класу</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--bg1:#f6f2ff;--bg2:#e2f3ff;--c:rgba(255,255,255,.72);--b:rgba(110,90,220,.2);--t:#1d1650;--m:#5e5a94;--in:rgba(255,255,255,.88)}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Nunito,system-ui,sans-serif;font-weight:600;color:var(--t);background:linear-gradient(160deg,var(--bg1),var(--bg2));overflow-x:hidden}
+.blob{position:fixed;width:46vmax;height:46vmax;border-radius:50%;filter:blur(90px);opacity:.3;z-index:0;animation:fl 18s ease-in-out infinite alternate;pointer-events:none}
+.b1{background:#7c5cff;top:-15vmax;left:-12vmax}.b2{background:#19d3c5;bottom:-18vmax;right:-10vmax;animation-delay:-6s}.b3{background:#ff5ca8;top:40%;left:55%;width:28vmax;height:28vmax;opacity:.3}
+@keyframes fl{to{transform:translate(6vmax,5vmax) scale(1.15)}}
+#app{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:18px 16px 40px}
+h1,h2,.u{font-family:Unbounded,sans-serif;margin:0}
+.top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.glass{background:var(--c);border:1px solid var(--b);border-radius:28px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 18px 50px rgba(90,70,200,.16)}
+.hero{padding:22px;margin:14px 0 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.mas{font-size:64px;animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) rotate(-4deg)}}
+.hero h1{font-size:clamp(22px,5vw,34px);background:linear-gradient(90deg,#5b3df5,#0ea5e9,#ec4899);-webkit-background-clip:text;background-clip:text;color:transparent}
+:root:not([data-theme=dark]) .hero h1{}
+.bar{height:14px;border-radius:99px;background:var(--in);overflow:hidden;margin-top:8px;min-width:200px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#19d3c5,#7c5cff,#ff5ca8);border-radius:99px;transition:width .6s}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.w{padding:20px;cursor:pointer;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s;text-align:left;color:var(--t);font:inherit;border:1px solid var(--b)}
+.w:hover{transform:translateY(-6px) scale(1.02)}
+.w:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--g1),var(--g2));opacity:.22}
+.w>*{position:relative}
+.pl{font-size:54px;display:inline-block;filter:drop-shadow(0 8px 14px rgba(0,0,0,.35))}
+.w h2{font-size:17px;margin:6px 0 4px}.w p{margin:0;color:var(--m);font-size:15px}
+.st{font-size:22px;margin-top:10px;letter-spacing:3px}
+.tag{display:inline-block;padding:4px 12px;border-radius:99px;background:var(--in);font-size:13px;color:var(--m)}
+.btn{border:0;border-radius:18px;padding:14px 26px;font:800 17px Nunito,sans-serif;color:#fff;background:linear-gradient(135deg,#7c5cff,#ff5ca8);cursor:pointer;box-shadow:0 10px 26px rgba(124,92,255,.45);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:scale(.96)}
+.btn.g{background:var(--in);color:var(--t);box-shadow:none;border:1px solid var(--b)}
+.q{padding:24px;margin-top:14px;text-align:center}
+.expr{font-size:clamp(26px,6vw,44px);font-weight:800;margin:20px 0;line-height:2.1;word-break:break-word}
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 .12em;font-size:.82em;line-height:1.05}
+.fr i{font-style:normal;padding:0 .18em}.fr i:first-child{border-bottom:.09em solid currentColor}
+.mn{display:inline-flex;align-items:center}.mn .fr{margin-left:.08em}
+em{font-family:Unbounded,sans-serif;font-style:normal;color:#7c3aed}
+.ans{display:flex;align-items:center;justify-content:center;gap:12px;font-size:28px;font-weight:800;margin:10px 0 6px;flex-wrap:wrap}
+input{font:800 24px Nunito,sans-serif;text-align:center;width:96px;padding:12px 6px;border-radius:16px;border:2px solid var(--b);background:var(--in);color:var(--t);outline:0;transition:border .2s}
+input:focus{border-color:#19d3c5;box-shadow:0 0 0 4px rgba(25,211,197,.25)}
+.fin{display:flex;flex-direction:column;align-items:center;gap:6px}.fin b{width:100%;height:4px;border-radius:4px;background:var(--t)}
+.note{color:var(--m);font-size:14px;margin:6px 0 16px}
+.acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.fb{min-height:54px;margin-top:16px;padding:14px 18px;border-radius:18px;font-size:18px;font-weight:800;background:var(--in)}
+.fb.ok{background:rgba(25,211,120,.25)}.fb.no{background:rgba(255,92,92,.25)}.fb.so{background:rgba(255,209,102,.25)}
+.dots{display:flex;gap:6px;flex:1;min-width:120px}.dots i{flex:1;height:10px;border-radius:9px;background:var(--in)}.dots i.d{background:linear-gradient(90deg,#19d3c5,#7c5cff)}.dots i.c{box-shadow:0 0 0 2px #ffd166}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px}
+.opt{padding:18px 12px;font:800 22px Unbounded,sans-serif;font-size:clamp(16px,3.6vw,22px);border-radius:20px;border:2px solid var(--b);background:var(--in);color:var(--t);cursor:pointer;transition:.2s}
+.opt:hover{transform:translateY(-3px);border-color:#19d3c5}.opt.ok{background:rgba(25,211,120,.4);border-color:#19d378}.opt.no{background:rgba(255,92,92,.4);border-color:#ff5c5c;animation:sh .4s}.opt.off{opacity:.25;pointer-events:none}
+.shake{animation:sh .4s}@keyframes sh{25%{transform:translateX(-9px)}75%{transform:translateX(9px)}}
+.big{font-size:70px}.sm{font-size:clamp(18px,3.8vw,26px);line-height:2;font-weight:700}.cf{position:fixed;top:-30px;font-size:26px;z-index:9;pointer-events:none;animation:fa 1.6s ease-in forwards}
+@keyframes fa{to{transform:translateY(110vh) rotate(540deg);opacity:.2}}
+.w.cell{padding:16px;display:flex;flex-direction:column;gap:4px;min-height:200px}.grid.s{grid-template-columns:repeat(auto-fill,minmax(205px,1fr))}.cell h3{font:700 14px/1.35 Unbounded,sans-serif;margin:4px 0}.nn{color:var(--m);font-size:13px}.lock{opacity:.55;border-style:dashed}.lock:before{opacity:.06}.par{display:flex;align-items:center;gap:12px;margin:32px 4px 14px;flex-wrap:wrap}.par h2{font-size:clamp(16px,3.6vw,22px);flex:1}.par>span:first-child{font-size:36px}.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);padding:14px 22px;border-radius:99px;background:linear-gradient(135deg,#7c5cff,#ff5ca8);color:#fff;font-weight:800;z-index:20;text-align:center;max-width:92vw;animation:bob 1s}.mix{width:100%;margin-top:14px;font-size:19px;padding:18px}.fm{display:inline-block;animation:pop .45s}@keyframes pop{0%{transform:scale(.3)}70%{transform:scale(1.35)}}.sl{fill:rgba(120,100,200,.2);cursor:pointer;transition:fill .2s}.sl.on{fill:#ff5ca8}.sl:hover{opacity:.8}.mas{cursor:pointer;user-select:none}.chip{padding:8px 14px;border-radius:99px;background:var(--c);border:1px solid var(--b);font-weight:800}
+
+#app{max-width:1100px}
+.fx{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.fx i{position:absolute;bottom:-70px;left:var(--l);font-style:normal;font-size:var(--s);opacity:.2;animation:up var(--d) linear infinite}
+@keyframes up{to{transform:translateY(-118vh) rotate(360deg)}}
+.w{animation:in .6s both;animation-delay:var(--dl,0s)}
+@keyframes in{from{opacity:0;transform:translateY(26px) scale(.88)}}
+.pl{animation:fl2 4s ease-in-out infinite;animation-delay:var(--dl,0s)}
+@keyframes fl2{50%{transform:translateY(-7px) rotate(7deg)}}
+@keyframes jump{30%{transform:translateY(-26px) scale(1.25) rotate(-10deg)}60%{transform:translateY(0) scale(.92)}}
+.qwrap{display:grid;gap:14px;margin-top:14px}.qwrap .q{margin-top:0}
+@media(min-width:900px){.qwrap{grid-template-columns:1.05fr 1fr;align-items:start}}
+.mrow{display:flex;gap:12px;align-items:center;text-align:left;margin-bottom:12px}.mrow .fb{flex:1;margin:0}
+.mc{font-size:60px;line-height:1;animation:bob 3s ease-in-out infinite}.mc.hit{animation:jump .7s}.mc.shk{animation:sh .5s}
+.track{position:relative;flex:1;min-width:140px;height:30px;border-radius:99px;background:var(--in);border:1px solid var(--b)}
+.track b{position:absolute;left:0;top:0;bottom:0;border-radius:99px;background:linear-gradient(90deg,#19d3c5,#7c5cff,#ff5ca8);opacity:.4;transition:width .8s}
+.track span{position:absolute;top:-8px;font-size:30px;transition:left .8s cubic-bezier(.3,1.6,.5,1);transform:rotate(45deg)}
+.track u{position:absolute;right:4px;top:-8px;font-size:30px;text-decoration:none;animation:fl2 3s infinite}
+.pulse{animation:jump .5s}
+.xpf{display:inline-block;margin-left:8px;color:#7c3aed;font-family:Unbounded,sans-serif;animation:xp 1.4s ease-out both}
+@keyframes xp{0%{transform:translateY(12px) scale(.4);opacity:0}30%{opacity:1;transform:translateY(-8px) scale(1.4)}100%{transform:translateY(-3px) scale(1)}}
+.pad{padding:14px}.ptabs{display:flex;gap:8px;margin-bottom:10px}
+.ptabs button{flex:1;padding:10px;border-radius:14px;border:1px solid var(--b);background:var(--in);color:var(--t);font:800 14px Nunito,sans-serif;cursor:pointer}
+.ptabs button.on{background:linear-gradient(135deg,#7c5cff,#ff5ca8);color:#fff;border-color:transparent}
+.tools{display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap}
+.dot{width:30px;height:30px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.3);cursor:pointer;padding:0}
+.tl{padding:6px 12px;border-radius:12px;border:1px solid var(--b);background:var(--in);color:var(--t);font:800 14px Nunito,sans-serif;cursor:pointer}
+.cv{height:min(330px,52vh);border-radius:16px;overflow:hidden;border:1px solid var(--b);background-color:#fff;background-image:linear-gradient(#cfe0ff 1px,transparent 1px),linear-gradient(90deg,#cfe0ff 1px,transparent 1px);background-size:24px 24px}
+@media(min-width:900px){.cv{height:400px}}
+.cv canvas{display:block;touch-action:none;cursor:crosshair}
+.rg{width:80%;display:block;margin:8px auto;padding:0;border:0;background:none;accent-color:#7c5cff}
+.pst{display:inline-block;animation:starin .8s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes starin{0%{transform:scale(0) rotate(-200deg)}100%{transform:scale(1) rotate(0)}}
+.land{font-size:76px;display:inline-block;animation:land 1.2s cubic-bezier(.3,1.4,.5,1) both}
+@keyframes land{from{transform:translate(-160px,-120px) scale(.3) rotate(-40deg);opacity:0}}
+</style></head><body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="fx" id="fx"></div>
+<div id="app"></div>
+<script>
+const g=(a,b)=>b?g(b,a%b):a;
+const R=(n,d)=>{if(d<0){n=-n;d=-d}const k=g(Math.abs(n),d)||1;return[n/k,d/k]};
+function ev(s){const t=s.match(/\d+(?:_\d+\/\d+|\/\d+)?|[()+\-*:^]/g);let i=0;
+const num=x=>{if(x.includes('_')){const[w,f]=x.split('_');const[a,b]=f.split('/').map(Number);return R(+w*b+a,b)}if(x.includes('/')){const[a,b]=x.split('/').map(Number);return R(a,b)}return[+x,1]};
+const E=()=>{let a=T();while(t[i]=='+'||t[i]=='-'){const o=t[i++],b=T();a=R(a[0]*b[1]+(o=='+'?1:-1)*b[0]*a[1],a[1]*b[1])}return a};
+const T=()=>{let a=F();while(t[i]=='*'||t[i]==':'){const o=t[i++],b=F();a=o=='*'?R(a[0]*b[0],a[1]*b[1]):R(a[0]*b[1],a[1]*b[0])}return a};
+const F=()=>{let a;if(t[i]=='('){i++;a=E();i++}else a=num(t[i++]);if(t[i]=='^'){i+=2;a=R(a[0]*a[0],a[1]*a[1])}return a};
+return E()}
+const H=s=>s.replace(/\*/g,'·').replace(/-/g,'−').replace(/(\d+)(?:_(\d+)\/(\d+)|\/(\d+))?/g,(m,w,a,b,c)=>a?`<span class="mn">${w}<span class="fr"><i>${a}</i><i>${b}</i></span></span>`:c?`<span class="fr"><i>${w}</i><i>${c}</i></span>`:m).replace(/\^2/g,'<sup>2</sup>').replace(/x/g,'<em>x</em>');
+const AS=([n,d])=>d==1?''+n:n>d?`${Math.floor(n/d)}_${n%d}/${d}`:`${n}/${d}`;
+const X=(n,a,nm)=>a.map((q,i)=>['№'+n+' · '+(nm?nm[i]:i+1)+')',...[].concat(q)]);
+const W=[
+{n:'Планета Суми',e:'🪐',d:'Додаємо й віднімаємо дроби',c:['#7c5cff','#38bdf8'],p:'Обчисли',t:[...X(264,['3/7+4/9','8/9-7/8','13/15-2/3','20/21+3/7','17/18-11/12','7/16+1/6','2/9+5/6','10/21+9/14','7/9-4/15','9/14-3/7+15/28','1/6+1/4-1/8','13/18-29/45+8/15']),...X(278,[['0,8-5/7','4/5-5/7'],['7_7/8-3,18','7_7/8-159/50']],[1,3]),...X(286,['17_2/3-6_1/36+4_3/8','10_9/16-(3_11/12+4_4/9)'])]},
+{n:'Мішана галактика',e:'🌌',d:'Мішані числа: сума й різниця',c:['#ff5ca8','#ffb36b'],p:'Обчисли',t:[...X(271,['4_5/9+7_1/6','6_11/12+8_13/18','2_3/16+1_7/24+3_1/12']),...X(274,['3_1/12-1/6','8_7/30-2_9/20','7_10/51-4_21/34','5_1/4-1_3/8'])]},
+{n:'Рівняння-детектив',e:'🕵️',d:'Знайди таємничий x',c:['#19d3c5','#7cff8a'],p:'Розв’яжи рівняння',eq:1,t:[...X(276,[['x+7_4/15=9_7/10','9_7/10-7_4/15'],['8_9/14-x=4_3/7','8_9/14-4_3/7'],['x-3_8/9=5_1/12','5_1/12+3_8/9']]),...X(284,[['(x+5/12)-9/20=11/15','11/15+9/20-5/12'],['4_3/4-(x-2_5/8)=3_5/6','4_3/4-3_5/6+2_5/8']])]},
+{n:'Літерна туманність',e:'🔮',d:'Букви, дужки, спрощення',c:['#ffd166','#ff7a59'],p:'Обери правильну відповідь',mc:1,t:[...X(314,[['12·3a','36a','15a','36','123a'],['0,6a·7b','4,2ab','42ab','0,42ab','13,6ab'],['0,8m·0,5n·4p','1,6mnp','16mnp','0,16mnp','5,3mnp']]),...X(315,[['2(x+7)','2x+14','2x+7','x+14','2x+9'],['7(5−a)','35−7a','35−a','12−7a','5−7a'],['(c−0,4)·1,2','1,2c−0,48','1,2c−0,4','c−0,48','1,2c+0,48']]),...X(316,[['2,7c−c','1,7c','2,7','3,7c','1,7'],['3x+17x−5x','15x','25x','9x','15'],['5,6a+0,4a−2','6a−2','6a+2','4a','5,2a']]),...X(344,[['2/3a+5/8a+1/6a','1_11/24a','8/17a','1_7/24a','2_11/24a'],['2/5x+4/7x-5/14x','43/70x','41/70x','1/2x','43/26x']],[1,3]),...X(347,[['6·(2/3a+5/12b)','4a+2,5b','4a+5b','3a+2,5b','4a+0,5b'],['1/3·(9/11m−6/7n)','3/11m−2/7n','3m−2n','3/11m+2/7n','9/11m−2/7n'],['12·(3/4x+13/18y−1/24z)','9x+8_2/3y−1/2z','9x+13y−z','9x+8_2/3y+1/2z','3x+8_2/3y−1/2z'],['1_1/7·(7p+21/24q−1_3/4)','8p+q−2','8p+q−1_3/4','7p+q−2','8p+21q−2']])]},
+{n:'Зоряне множення',e:'☄️',d:'Множимо дроби й мішані числа',c:['#ff7a59','#ff5ca8'],p:'Помнож',t:[...X(318,['2/13*5','4/17*3','8/9*2','4/49*7','7*3/40','6*15/18','7/12*24','45*8/15']),...X(320,['2/7*3/5','3/4*5/6','4/7*7/9','15/16*48/55','22/25*10/77','13/24*16/39','6/35*14/15','36/85*34/39']),...X(322,['9_3/7*5/22','6_3/8*16/17','2_1/3*1_1/5','2_1/4*2_2/27','2_8/11*5_2/15','7/9*1_1/14*5_2/5'],[1,2,3,5,6,7])]},
+{n:'Планета-Бос',e:'👾',d:'Найхитріші вирази. Готовий?',c:['#ef4444','#7c5cff'],p:'Знайди значення',t:[...X(340,['3_5/14*7/9-2_3/14*7/9','7_1/5*2_1/8+7_1/5*1_5/8','3/4*1_3/5+1_3/5*1_3/8-1_1/2*1_3/5']),...X(336,['1_3/22*2_14/15-(1_5/8+2_1/8*11/17)*3/7','6_2/5*1_9/16-(2_1/4)^2']),...X(326,['(11/18-4/9)*3/16','11/18-4/9*3/16','1_3/5*3/4+1_3/8','1_3/25*2_1/7-2_1/9*27/190'],[1,2,4,5])]},
+{n:'Острів Відсотків',e:'🏝️',d:'Дріб і відсоток від числа, задачі',c:['#19d3c5','#38bdf8'],p:'Розв’яжи',t:[...X(369,[['3/5 від числа 60','3/5*60'],['0,16 від числа 20','4/25*20'],['5/6 від числа 3/20','5/6*3/20'],['3/8 від числа 2_2/3','3/8*2_2/3']]),...X(370,[['14 % від числа 60','14/100*60'],['40 % від числа 32','40/100*32'],['8 % від числа 3/16','8/100*3/16']]),...X(375,[['Мідь становить 4/7 маси сплаву. Скільки кілограмів міді міститься у 280 кг такого сплаву?','4/7*280']]),...X(377,[['Магазин продав 480 кг огірків і помідорів, причому маса огірків становила 85 % маси цих овочів. Скільки кілограмів огірків продали?','85/100*480']]),...X(382,[['У будинок відпочинку привезли 1440 кг яблук і груш. Яблука становили 7/12 маси привезених фруктів. Скільки кілограмів груш привезли в будинок відпочинку?','1440-7/12*1440']])]},
+{n:'Рівняння-детектив 2',e:'🔎',d:'Рівняння з множенням і діленням',c:['#7c5cff','#ff5ca8'],p:'Розв’яжи рівняння',eq:1,t:[...X(413,[['2/7x=9/14','9/14:2/7'],['3x=2/9','2/9:3'],['18/49:x=6/35','18/49:6/35']],[1,3,5]),...X(426,[['3_1/3-1_1/20x=1_14/15','(3_1/3-1_14/15):1_1/20'],['3/8x+7/12x-5/6x=9/32','9/32:(3/8+7/12-5/6)'],['2_1/3:x-1_1/6=1_5/9','2_1/3:(1_5/9+1_1/6)'],['2_1/3:(x-1_1/6)=1_5/9','2_1/3:1_5/9+1_1/6']])]},
+{n:'Арена Ділення',e:'🐉',d:'Вирази з діленням — для сміливих',c:['#ef4444','#ffb36b'],p:'Знайди значення',t:X(424,['(2_13/48+2_5/12):3_3/4-9_3/4:12','(8:2_10/19-1_13/15*1_6/49):(3_1/12-1_25/36)'])}
+];
+const CH=[['🧩 Розділ 1 · Додавання й віднімання',[0,1,2]],['✨ Розділ 2 · Множення та дужки',[3,4,5]],['🌊 Розділ 3 · Дріб від числа й ділення',[6,7,8]]];
+const L=['Новачок','Дослідник','Космонавт','Капітан','Зоряний майстер','Легенда'];
+let S={xp:0,s:{}};try{S=Object.assign(S,JSON.parse(localStorage.getItem('fu')||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem('fu',JSON.stringify(S))}catch(e){}};
+const $=id=>document.getElementById(id),app=$('app');
+const sh=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const pick=a=>a[Math.random()*a.length|0];
+function boom(n=24){for(let i=0;i<n;i++){const s=document.createElement('span');s.className='cf';s.textContent=pick(['⭐','✨','🎉','💫','🌟']);s.style.left=Math.random()*100+'vw';s.style.animationDelay=Math.random()*.5+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),2400)}}
+const TOP=[[10,'Додавання і віднімання дробів','🍰',[264,271,274,276,278,284,286]],[11,'Множення дробів','✖️',[314,315,316,318,320,322,326,336,340,344,347]],[12,'Знаходження дробу від числа','🎯',[369,370,375,377,382]],[13,'Взаємно обернені числа. Ділення дробів','🔁',[413,424,426]],[14,'Знаходження числа за заданим значенням його дробу','🧩',[]],[15,'Перетворення звичайних дробів у десяткові','🔄',[]],[16,'Нескінченні періодичні десяткові дроби','♾️',[]],[17,'Десяткове наближення звичайного дробу','🔬',[]],[18,'Відношення','⚖️',[]],[19,'Пропорції','🧪',[]],[20,'Відсоткове відношення двох чисел','💯',[]],[21,'Пряма та обернена пропорційність','📈',[]],[22,'Поділ числа в заданому відношенні','🍫',[]],[27,'Додатні й від’ємні числа','🌡️',[]],[28,'Координатна пряма','📍',[]],[29,'Цілі числа. Раціональні числа','🔢',[]],[30,'Модуль числа','📏',[]],[31,'Порівняння чисел','⚔️',[]],[32,'Додавання раціональних чисел','➕',[]],[33,'Властивості додавання раціональних чисел','🧲',[]],[34,'Віднімання раціональних чисел','➖',[]],[35,'Множення раціональних чисел','✨',[]],[36,'Переставна та сполучна властивості множення. Коефіцієнт','🔀',[]],[37,'Розподільна властивість множення','🪄',[]],[38,'Ділення раціональних чисел','➗',[]],[39,'Розв’язування рівнянь','🕵️',[]]];
+const rg=(a,b)=>Array.from({length:b-a+1},(_,i)=>a+i);
+const PAR=[['§ 2 · Звичайні й десяткові дроби','🍕',rg(10,17)],['§ 3 · Відношення і пропорції','⚖️',rg(18,22)],['§ 4 · Раціональні числа і дії з ними','🌡️',rg(27,39)]];
+const PC=[['#7c5cff','#38bdf8'],['#ff5ca8','#ffb36b'],['#19d3c5','#7cff8a'],['#ffd166','#ff7a59'],['#ff7a59','#ff5ca8'],['#38bdf8','#7c5cff']];
+const ALL=W.flatMap(w=>w.t.map(t=>({t,w})));
+const pool=ex=>ALL.filter(x=>ex.includes(+x.t[0].match(/\d+/)[0])).sort((a,b)=>a.t[0].match(/\d+/)[0]-b.t[0].match(/\d+/)[0]);
+let ac;function snd(ok){if(S.mute)return;try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();(ok?[660,880,1100]:[220,160]).forEach((f,i)=>{const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;o.type=ok?'triangle':'sawtooth';g.gain.value=.08;o.connect(g);g.connect(ac.destination);o.start(ac.currentTime+i*.09);o.stop(ac.currentTime+i*.09+.12)})}catch(e){}}
+function toast(m){const d=document.createElement('div');d.className='toast';d.textContent=m;document.body.appendChild(d);setTimeout(()=>d.remove(),3000)}
+function home(){const lv=Math.floor(S.xp/100),p=S.xp%100,open=TOP.filter(t=>t[3].length);
+app.innerHTML=`<div class="glass hero"><div class="mas" title="Торкнися до мене!" onclick="fun()">🦊</div><div style="flex:1;min-width:220px"><h1 class="u">Математичний Космос 6</h1><p style="margin:6px 0 0;color:var(--m)">Я — Дробик! Мандруй галактиками математики 6 класу: відкривай теми, збирай зірки й ставай Легендою ✨</p><div class="top" style="margin-top:10px"><span class="chip">⚡ Рівень ${lv+1}: ${L[Math.min(lv,L.length-1)]}</span><span class="chip">🌟 ${S.xp} XP</span><button class="chip" style="color:inherit;font:inherit;cursor:pointer" onclick="S.mute=!S.mute;save();home()">${S.mute?'🔇':'🔊'}</button></div><div class="bar"><i style="width:${p}%"></i></div></div></div>
+<div class="acts" style="margin-top:14px"><button class="btn mix" style="flex:2;width:auto;margin:0" onclick="start(0,'rnd')">⚔️ Мікс-бій: 10 випадкових</button><button class="btn g mix" style="flex:1;width:auto;margin:0" onclick="lab()">🍕 Піца-лаб</button></div>
+${PAR.map(([pn,pe,ids])=>{const ts=ids.map(i=>TOP.find(t=>t[0]==i)),got=ts.reduce((a,t)=>a+(S.s[t[0]]||0),0),max=ts.filter(t=>t[3].length).length*3;return `<div class="par"><span>${pe}</span><h2 class="u">${pn}</h2><span class="chip">⭐ ${got}/${max}</span></div><div class="grid s">${ts.map((t,k)=>{const o=t[3].length,s=S.s[t[0]]||0,c=PC[(t[0]+k)%6];return `<button class="glass w cell ${o?'':'lock'}" style="--g1:${c[0]};--g2:${c[1]};--dl:${k*.05}s" onclick="${o?`topic(${t[0]})`:`toast('🔒 Надішли вправи до цієї теми — і планета оживе!')`}"><span class="pl" style="font-size:44px">${t[2]}</span><span class="nn">Тема ${t[0]}</span><h3>${t[1]}</h3><div style="flex:1"></div>${o?`<span class="tag">${pool(t[3]).length} завдань</span><div class="st" style="margin-top:6px">${'⭐'.repeat(s)}${'☆'.repeat(3-s)}</div>`:'<div class="st" style="font-size:15px;letter-spacing:0">🔒 Скоро</div>'}</button>`}).join('')}</div>`}).join('')}`}
+let r;
+function start(id,m='rnd',ex=0){const T=TOP.find(x=>x[0]==id);let src=id?pool(ex?[ex]:T[3]):pool([].concat(...TOP.map(t=>t[3])));if(m=='rnd')src=sh(src).slice(0,10);r={i:id,m,ex,qs:src,k:0,ok:0,first:0,combo:0,xp:0,att:0,hint:0,done:0};show()}
+function topic(id){const T=TOP.find(x=>x[0]==id),it=pool(T[3]),c=PC[id%6],ex={};it.forEach(x=>{const n=x.t[0].match(/\d+/)[0];ex[n]=(ex[n]||0)+1});
+app.innerHTML=`<div class="top"><button class="btn g" style="padding:10px 18px" onclick="home()">←</button></div><div class="glass hero"><div class="mas">${T[2]}</div><div style="flex:1;min-width:220px"><span class="nn">Тема ${id}</span><h1 class="u" style="font-size:clamp(20px,4.5vw,30px)">${T[1]}</h1><p style="margin:6px 0 0;color:var(--m)">Усього завдань: ${it.length}</p></div></div><div class="acts" style="justify-content:flex-start;margin:0 0 20px"><button class="btn" onclick="start(${id},'all')">▶ Усі завдання по порядку (${it.length})</button><button class="btn g" onclick="start(${id},'rnd')">🎲 10 випадкових</button></div><h2 class="u" style="font-size:16px;margin:0 4px 12px">Або обери вправу з підручника:</h2><div class="grid s">${Object.keys(ex).map(n=>`<button class="glass w cell" style="--g1:${c[0]};--g2:${c[1]};min-height:110px" onclick="start(${id},'all',${n})"><h3>Вправа №${n}</h3><div style="flex:1"></div><span class="tag">${ex[n]} прикладів</span></button>`).join('')}</div>`}
+let pad,pz={d:4,s:{}};
+const RG=()=>`<input class="rg" type="range" min="2" max="12" value="${pz.d}" oninput="pz.d=+this.value;pzR()">`;
+function show(){const it=r.qs[r.k],t=it.t,w=r.w=it.w;r.att=0;r.hint=0;r.done=0;
+let body;
+if(w.mc){r.opts=sh(t.slice(3).concat(t[2]));body=`<div class="opts">${r.opts.map((o,j)=>`<button class="opt" id="o${j}" onclick="pickO(${j})">${H(o)}</button>`).join('')}</div><div class="acts"><button class="btn g" onclick="hint()">💡 Підказка</button><button class="btn g" onclick="skip()">⏭ Пропустити</button></div>`}
+else{r.a=ev(t[2]||t[1]);body=`<div class="ans"><span>${w.eq?'<em>x</em> =':'='}</span><input id="w" inputmode="numeric" placeholder="ціле"><div class="fin"><input id="n" inputmode="numeric" placeholder="чис."><b></b><input id="d" inputmode="numeric" placeholder="знам."></div></div><div class="note">Скороти дріб і виділи цілу частину. Ціле число впиши лише в «ціле». Можна й десятковим дробом там же (наприклад, 8,4).</div><div class="acts"><button class="btn" id="go" onclick="chk()">Перевірити ✓</button><button class="btn g" onclick="hint()">💡 Підказка</button><button class="btn g" onclick="skip()">⏭ Пропустити</button></div>`}
+const b0=Math.min(r.k/r.qs.length*100,90);
+app.innerHTML=`<div class="top"><button class="btn g" style="padding:10px 18px" onclick="home()">←</button><div class="track"><b id="tb" style="width:${b0}%"></b><span id="rk" style="left:${b0}%">🚀</span><u>🪐</u></div><span class="chip" id="cb">🔥 ${r.combo}</span><span class="chip" id="xp">🌟 ${r.xp}</span></div>
+<div class="qwrap"><div class="glass q"><div class="mrow"><div class="mc" id="mc">🦊</div><div class="fb" id="fb">${pick(['Ти зможеш!','Подумай не поспішаючи.','Спробуй, я вірю в тебе!','Космічна вправа, вперед!','Розбери приклад у зошиті 📓'])}</div></div><span class="tag">Вправа ${t[0]} · ${r.k+1}/${r.qs.length}</span><div style="margin-top:10px;color:var(--m)">${w.p}:</div><div class="expr${t[1].length>40?' sm':''}">${H(t[1])}${w.mc||t[1].length>40||t[1].includes('від')?'':' <span style="opacity:.6">= ?</span>'}</div>${body}</div>
+<div class="glass pad"><div class="ptabs"><button id="t1" class="on" onclick="tab(1)">📓 Зошит у клітинку</button><button id="t2" onclick="tab(2)">🍕 Піца-дріб</button></div>
+<div id="p1"><div class="tools"><button class="dot" style="background:#1d4ed8" onclick="pc('#1d4ed8')"></button><button class="dot" style="background:#dc2626" onclick="pc('#dc2626')"></button><button class="dot" style="background:#16a34a" onclick="pc('#16a34a')"></button><button class="tl" onclick="pc(null)">🧽 Гумка</button><button class="tl" onclick="pw()">✏️ Товщина</button><button class="tl" onclick="pu()">↶</button><button class="tl" onclick="pcl()">🗑</button></div><div class="cv"><canvas id="cv"></canvas></div></div>
+<div id="p2" style="display:none"><div id="pzv"></div>${RG()}<div class="note" style="text-align:center">Тягни повзунок і торкайся скибочок!</div></div></div></div>`;
+initPad();pzR();
+if(!w.mc){$('w').focus();app.onkeydown=e=>{if(e.key=='Enter'){r.done?next():chk()}}}}
+function initPad(){const c=$('cv');if(!c)return;const d=window.devicePixelRatio||1,w=c.parentNode.clientWidth,h=c.parentNode.clientHeight;c.width=w*d;c.height=h*d;c.style.width=w+'px';c.style.height=h+'px';const x=c.getContext('2d');x.scale(d,d);pad={c,x,st:[],cur:null,col:'#1d4ed8',base:2.5,w:2.5};
+const pos=e=>{const b=c.getBoundingClientRect();return[e.clientX-b.left,e.clientY-b.top]};
+c.onpointerdown=e=>{e.preventDefault();c.setPointerCapture(e.pointerId);pad.cur={col:pad.col,w:pad.w,p:[pos(e)]};pad.st.push(pad.cur);rd()};
+c.onpointermove=e=>{if(pad.cur){pad.cur.p.push(pos(e));rd()}};
+c.onpointerup=c.onpointercancel=()=>{pad.cur=null}}
+function rd(){const{x,c}=pad;x.clearRect(0,0,c.width,c.height);pad.st.forEach(s=>{x.globalCompositeOperation=s.col?'source-over':'destination-out';x.strokeStyle=s.col||'#000';x.lineWidth=s.w;x.lineCap=x.lineJoin='round';x.beginPath();s.p.forEach(([a,b],i)=>i?x.lineTo(a,b):x.moveTo(a,b));if(s.p.length==1)x.lineTo(s.p[0][0]+.1,s.p[0][1]);x.stroke()});x.globalCompositeOperation='source-over'}
+const pc=c=>{pad.col=c;pad.w=c?pad.base:20},pw=()=>{pad.base=pad.base==2.5?5:2.5;if(pad.col)pad.w=pad.base;toast(pad.base==5?'🖊 Товсте перо':'✏️ Тонке перо')},pu=()=>{pad.st.pop();rd()},pcl=()=>{pad.st=[];rd()};
+function tab(n){$('p1').style.display=n==1?'':'none';$('p2').style.display=n==2?'':'none';$('t1').className=n==1?'on':'';$('t2').className=n==2?'on':'';if(n==2)pzR()}
+function pzR(){const v=$('pzv');if(!v)return;const d=pz.d;let on=0,p='';const P=t=>[60+54*Math.cos(t),60+54*Math.sin(t)];for(let i=0;i<d;i++){if(pz.s[i])on++;const[x,y]=P(2*Math.PI*i/d-1.5708),[u,w]=P(2*Math.PI*(i+1)/d-1.5708);p+=`<path class="sl ${pz.s[i]?'on':''}" onclick="pz.s[${i}]=!pz.s[${i}];pzR()" d="M60 60L${x} ${y}A54 54 0 0 1 ${u} ${w}Z" stroke="#fff" stroke-width="2.5"/>`}
+v.innerHTML=`<div style="text-align:center"><svg viewBox="0 0 120 120" width="220">${p}</svg><div class="u" style="font-size:26px">${H(on+'/'+d)} <span style="font-size:15px;color:var(--m)">≈ ${Math.round(on/d*100)} %</span></div></div>`}
+function lab(){app.innerHTML=`<div class="top"><button class="btn g" style="padding:10px 18px" onclick="home()">←</button><h2 class="u" style="font-size:20px">🍕 Піца-лабораторія</h2></div><div class="glass q" style="margin-top:14px"><p style="margin:0 0 6px;color:var(--m)">Торкайся скибочок і тягни повзунок — дивись, який дріб виходить!</p><div id="pzv"></div>${RG()}</div>`;pzR()}
+function react(e,c){const m=$('mc');if(!m)return;m.textContent=e;m.className='mc';void m.offsetWidth;m.className='mc '+c}
+const fb=(c,m)=>{const f=$('fb');f.className='fb '+c;f.innerHTML=m;react({ok:'🤩',no:'🤔',so:'🧐'}[c]||'🦊',c=='no'?'shk':'hit')};
+function nextBtn(){const a=document.querySelector('.acts');a.innerHTML=`<button class="btn" onclick="next()">${r.k+1<r.qs.length?'Далі →':'Фініш 🏁'}</button>`;r.done=1;const b=Math.min((r.k+1)/r.qs.length*100,90);$('rk').style.left=b+'%';$('tb').style.width=b+'%'}
+function good(){snd(1);r.ok++;if(r.att==0){r.first++;r.combo++}const g=(r.att==0?10:5)+Math.min(r.combo,5)-(r.hint?3:0);r.xp+=g;setTimeout(()=>{if([3,5,10].includes(r.combo))toast('🔥 Серія '+r.combo+'! Так тримати!')},60);boom(r.combo>2?36:14);fb('ok',`🎉 ${pick(['Правильно!','Бездоганно!','Ти геній!','Супер!'])} ${r.combo>2?'Серія 🔥'+r.combo+'!':''}<span class="xpf">+${g} XP</span>${pie()}`);['cb','xp'].forEach((id,i)=>{const e=$(id);e.textContent=i?'🌟 '+r.xp:'🔥 '+r.combo;e.className='chip pulse'});nextBtn()}
+function bad(ans){snd(0);r.combo=0;r.att++;if(r.att>=2||ans){fb('no',`Не біда! Правильна відповідь: <b>${ans}</b>`);nextBtn();return true}fb('no','Ой, майже! Спробуй ще раз 💪');document.querySelector('.q').classList.remove('shake');void document.querySelector('.q').offsetWidth;document.querySelector('.q').classList.add('shake')}
+function pickO(j){if(r.done)return;const t=r.qs[r.k].t;if(r.opts[j]==t[2]){$('o'+j).classList.add('ok');document.querySelectorAll('.opt').forEach(b=>b.classList.add('off'));$('o'+j).classList.remove('off');good()}else{$('o'+j).classList.add('no');$('o'+j).classList.add('off');snd(0);r.combo=0;r.att++;if(r.att>=2){r.opts.forEach((o,k)=>{if(o==t[2])$('o'+k).classList.add('ok')});document.querySelectorAll('.opt:not(.ok)').forEach(b=>b.classList.add('off'));fb('no','Правильна відповідь підсвічена зеленим 💚');nextBtn()}else fb('no','Не те. Спробуй інший варіант!')}}
+function chk(){if(r.done)return;const[an,ad]=r.a;const w=$('w').value.trim(),n=$('n').value.trim(),d=$('d').value.trim();
+if(!w&&!n){fb('so','Впиши відповідь 😊');return}
+if(/[.,]/.test(w)&&!n&&!d){const q=w.replace(',','.'),k=(q.split('.')[1]||'').length,v=R(Math.round(+q*10**k),10**k);if(v[0]*ad==an*v[1])good();else bad(H(AS(r.a)));return}
+let v,formOK;const ew=Math.floor(an/ad),en=an%ad;
+if(!d){const x=+(n||w);if(w&&n){fb('so','Ціле число пиши в одне поле 🙂');return}v=[x,1];formOK=en==0}
+else{if(!n||+d<=0){fb('so','Для дробу потрібні і чисельник, і знаменник');return}v=R(+w*+d+ +n,+d);formOK=en!=0&&(+w||0)==ew&&+n==en&&+d==ad}
+if(v[0]*ad==an*v[1]){if(formOK)good();else fb('so','Значення правильне! Але скороти дріб та виділи цілу частину ✂️')}else bad(H(AS(r.a)))}
+function hint(){const t=r.qs[r.k].t;if(r.done)return;r.hint=1;if(r.w.mc){const wr=r.opts.map((o,j)=>[o,j]).filter(x=>x[0]!=t[2]&&!$('o'+x[1]).classList.contains('off'));sh(wr).slice(0,2).forEach(x=>$('o'+x[1]).classList.add('off'));fb('so','💡 Прибрав два зайві варіанти!')}
+else fb('so',`💡 Знаменник відповіді — <b>${r.a[1]}</b>${r.a[0]>r.a[1]&&r.a[1]>1?`, ціла частина — <b>${Math.floor(r.a[0]/r.a[1])}</b>`:''}`)}
+function pie(){if(r.w.mc)return'';const[n,d]=r.a,f=n%d;if(d<2||d>16||!f)return'';let p='';const P=t=>[50+46*Math.cos(t),50+46*Math.sin(t)];for(let i=0;i<d;i++){const[x,y]=P(2*Math.PI*i/d-1.5708),[u,v]=P(2*Math.PI*(i+1)/d-1.5708);p+=`<path class="sl ${i<f?'on':''}" onclick="this.classList.toggle('on')" d="M50 50L${x} ${y}A46 46 0 0 1 ${u} ${v}Z" stroke="#fff" stroke-width="2"/>`}return `<div style="margin-top:10px;display:flex;align-items:center;gap:12px;justify-content:center"><svg viewBox="0 0 100 100" width="88">${p}</svg><span style="font-size:15px;color:var(--m)">Скібочки дробу ${f}/${d} — торкнися їх 🍕</span></div>`}
+function fun(){toast(pick(['🍕 Один і той самий дріб можна записати по-різному: 1/2 = 2/4 = 3/6','🎯 Відсоток — це дріб зі знаменником 100','✂️ Скоротив дріб — значення не змінилось, але стало простіше!','🔁 Щоб поділити на дріб, помнож на обернений дріб','🌟 Кожна помилка — це крок до перемоги. Дробик теж помилявся!','🧀 Будь-яке ціле число — це теж дріб: 5 = 5/1']))}
+function skip(){if(r.done)return;toast('⏭ Пропускаємо — вперед до наступного!');next()}
+function next(){r.k++;if(r.k<r.qs.length)show();else fin()}
+function fin(){const p=r.first/r.qs.length,st=p>=.9?3:p>=.6?2:1;const lo=Math.floor(S.xp/100);S.xp+=r.xp;if(Math.floor(S.xp/100)>lo)setTimeout(()=>toast('🎊 Новий рівень: '+L[Math.min(Math.floor(S.xp/100),L.length-1)]+'!'),1800);if(r.i&&!r.ex)S.s[r.i]=Math.max(S.s[r.i]||0,st);save();setTimeout(()=>{boom(50);snd(1)},900);
+app.innerHTML=`<div class="glass q" style="margin-top:40px"><div class="land">${st==3?'🏆':'🚀'}</div><h1 class="u" style="font-size:26px;margin:10px 0">${st==3?'Неймовірно!':st==2?'Круто!':'Гарний старт!'}</h1><div class="st" style="font-size:56px;margin:10px 0">${[0,1,2].map(i=>`<span class="pst" style="animation-delay:${.9+i*.35}s;${i<st?'':'filter:grayscale(1);opacity:.35'}">⭐</span>`).join('')}</div><p style="font-size:19px">З першої спроби: <b>${r.first}</b> з ${r.qs.length}<br>Зароблено: <b>+${r.xp} XP</b> 🌟</p><div class="acts"><button class="btn" onclick="start(${r.i},'${r.m}',${r.ex||0})">Ще раз 🔁</button><button class="btn g" onclick="home()">До карти 🗺️</button></div></div>`}
+$('fx').innerHTML=Array.from({length:18},()=>`<i style="--l:${Math.random()*100}%;--s:${20+Math.random()*26}px;--d:${16+Math.random()*16}s;animation-delay:-${Math.random()*30}s">${pick(['➕','➖','✖️','➗','½','¾','%','π','⭐','🔢','🧮'])}</i>`).join('');
+home();
+</script></body></html>
